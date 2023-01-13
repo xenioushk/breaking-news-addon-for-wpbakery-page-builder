@@ -1,6 +1,6 @@
 <?php
 
-/**
+
  * Plugin Name: Breaking News Addon For WP Bakery Page Builder
  * Plugin URI:  http://codecanyon.net/user/xenioushk
  * Version: 1.0.2
