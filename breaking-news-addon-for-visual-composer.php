@@ -92,8 +92,6 @@ if (!class_exists('BNM_VC_Addon')) {
 
   load_plugin_textdomain('bnm_vc', false, plugin_basename(dirname(__FILE__)) . '/languages/');
 
-
-
   /*--- Initialization---*/
 
   function bnmVcPluginInit()
