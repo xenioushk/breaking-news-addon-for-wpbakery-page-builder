@@ -1,0 +1,82 @@
+.bpvm-about-wrap ul,
+.bpvm-about-wrap li,
+.bpvm-about-wrap p {
+  font-size: 14px;
+  line-height: 2em;
+}
+
+.bpvm-about-wrap h2 {
+  margin: 0;
+  padding: 0;
+  text-align: left !important;
+}
+
+.bpvm-about-wrap small {
+  font-size: 12px;
+}
+
+.developer-info {
+  font-size: 16px;
+}
+
+.more-addon {
+  display: flex;
+  vertical-align: top;
+}
+
+.addon-list {
+  font-weight: 400;
+  padding-left: 0;
+  margin: 0;
+}
+
+.addon-list .version {
+  display: inline-block;
+  padding: 0 12px;
+  color: #fff;
+  background: lightskyblue;
+  margin: 0 6px;
+  border-radius: 12px;
+  display: none;
+}
+
+.addon-list li {
+  list-style-type: decimal;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0 12px;
+}
+
+.addon-list li span:nth-of-type(1) {
+  flex-basis: 300px;
+  font-weight: bold;
+}
+
+.addon-list li p {
+  flex-basis: 500px;
+}
+
+.addon-list .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0 12px;
+}
+
+.btn-addon {
+  display: inline-block;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn-addon.btn--download {
+  background: yellowgreen;
+}
+
+.btn-addon.btn--documentation {
+  background: lightskyblue;
+}

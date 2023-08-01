@@ -2,47 +2,108 @@
 
 /**
  * Plugin Name: Breaking News Addon For WP Bakery Page Builder
- * Plugin URI:  http://codecanyon.net/user/xenioushk
- * Version: 1.0.2
+ * Plugin URI:  https://github.com/xenioushk/breaking-news-addon-for-wpbakery-page-builder
+ * Version: 1.0.3
  * Description: Easy way to create & display breaking news any where of your site from WP Bakery Page Builder.
  * Author: xenioushk
- * Author URI:  http://codecanyon.net/user/xenioushk
+ * Author URI:  https://bluewindlab.net/
  * Text Domain: bnm_vc
+ * WP Requires at least: 6.0+
  * Domain Path: /languages/
  */
 
 if (!defined('ABSPATH')) {
   die('-1');
 }
-include_once(ABSPATH . 'wp-admin/includes/plugin.php');
-define("BNM_VC_PLUGIN_TITLE", 'Breaking News Addon For WP Bakery Page Builder');
-define("BNM_VC_PLUGIN_DIR", plugins_url() . '/breaking-news-addon-for-visual-composer/');
-define("BNM_VC_PLUGIN_VERSION", '1.0.2');
-define("BNM_VC_PLUGIN_PRODUCTION_STATUS", 1); // Change this value in to 0 in Devloper mode :)
-define('BNM_PLUGIN_INSTALLED_VERSION', get_option('bnm_plugin_version'));
+
+if (!class_exists('BNM_VC_Addon')) {
+
+  class BNM_VC_Addon
+  {
+
+    function __construct()
+    {
+
+      if (!defined('WPB_VC_VERSION') || !class_exists('BWL_Breaking_News_Manager')) {
+        add_action('admin_notices', 'notice_bnm_dependencies');
+        return;
+      }
 
 
-function notice_bnm_dependencies()
-{
+      define("BNM_VC_PLUGIN_TITLE", 'Breaking News Addon For WP Bakery Page Builder');
+      define("BNM_VC_PLUGIN_DIR", plugins_url() . '/breaking-news-addon-for-visual-composer/');
+      define("BNM_VC_PLUGIN_VERSION", '1.0.3');
+      define('BNM_PLUGIN_INSTALLED_VERSION', get_option('bnm_plugin_version'));
 
-  if (!function_exists('vc_map')) {
-    echo '
-        <div class="updated">
-          <p>' . sprintf(__('<strong>%s</strong> requires <strong><a href="https://1.envato.market/VKEo3" target="_blank">WP Bakery Page Builder</a></strong> plugin to be installed and activated on your site.', 'vc_extend'), BNM_VC_PLUGIN_TITLE) . '</p>
-        </div>';
+
+      define("BNM_VC_PLUGIN_ROOT_FILE", 'bwl-breaking-news-manager.php');
+      define("BNM_VC_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // Required for plugin autoupdate.
+
+      define("BNM_VC_PLUGIN_PATH", __DIR__);
+      define('BNM_VC_INSTALLATION_TAG', 'bnm_vc_installation_' . str_replace('.', '_', BNM_VC_PLUGIN_VERSION));
+
+      define("BNM_VC_CC_ID", "15317185"); // Plugin codecanyon Id.
+
+
+      $this->includeFiles();
+
+      add_action("wp_enqueue_scripts", [$this, "enqueueFrontendScripts"]);
+      add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
+    }
+
+
+
+
+    function notice_bnm_dependencies()
+    {
+      echo '
+      <div class="updated">
+        <p><strong>' . BNM_VC_PLUGIN_TITLE . '</strong> requires both <strong><a href="https://1.envato.market/VKEo3" target="_blank">WPBakery Page Builder</a></strong> & <strong><a href="https://1.envato.market/bnm-wp" target="_blank">BWL Breaking News Manager</a></strong> plugins to be installed and activated on your site.</p>
+      </div>';
+    }
+
+
+    function includeFiles()
+    {
+      if (is_admin()) {
+        require_once BNM_VC_PLUGIN_PATH . '/includes/bnm-vc-element.php';
+
+        // Auto Updater Scripts.
+        require_once BNM_VC_PLUGIN_PATH .  '/includes/autoupdater/WpAutoUpdater.php';
+        require_once BNM_VC_PLUGIN_PATH .  '/includes/autoupdater/installer.php';
+        require_once BNM_VC_PLUGIN_PATH .  '/includes/autoupdater/updater.php';
+      }
+    }
+
+    function enqueueFrontendScripts()
+    {
+    }
+
+    function enqueueAdminScripts()
+    {
+      // wp_enqueue_style('usa-vc-admin', plugins_url('assets/styles/admin.css', __FILE__), false, USA_VC_PLUGIN_VERSION, false);
+      wp_enqueue_script('bnm-vc-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery'], BNM_VC_PLUGIN_VERSION, TRUE);
+      wp_localize_script(
+        'bnm-vc-admin',
+        'BnmVcAdminData',
+        [
+          'product_id' => BNM_VC_CC_ID,
+          'installation' => get_option(BNM_VC_INSTALLATION_TAG)
+        ]
+      );
+    }
   }
 
-  if (!class_exists('BWL_Breaking_News_Manager')) {
+  load_plugin_textdomain('bnm_vc', false, plugin_basename(dirname(__FILE__)) . '/languages/');
 
-    echo '
-        <div class="updated">
-          <p>' . sprintf(__('<strong>%s</strong> requires <strong><a href="https://1.envato.market/bnm-wp" target="_blank">BWL Breaking News Manager</a></strong> plugin to be installed and activated on your site. Minimum version <b>1.1.0</b> required ! ', 'vc_extend'), BNM_VC_PLUGIN_TITLE) . '</p>
-        </div>';
+
+
+  /*--- Initialization---*/
+
+  function bnmVcPluginInit()
+  {
+    new BNM_VC_Addon();
   }
+
+  add_action('plugins_loaded', 'bnmVcPluginInit');
 }
-
-
-add_action('admin_notices', 'notice_bnm_dependencies');
-
-include_once dirname(__FILE__) . '/includes/bnm-vc-element.php';
-load_plugin_textdomain('bnm_vc', false, plugin_basename(dirname(__FILE__)) . '/languages/');

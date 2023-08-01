@@ -2,61 +2,60 @@
 
 add_action("vc_after_init", "bnm_vc_addon_function");
 
-function bnm_vc_addon_function() {
-    
-        if ( ! function_exists('vc_map')) {
+function bnm_vc_addon_function()
+{
 
-            return  '';
-        } 
-        
-        if ( ! class_exists('BWL_Breaking_News_Manager') ) {
-            
-             return  '';
-        
-         }
-        
-         if ( BNM_PLUGIN_INSTALLED_VERSION < '1.0.9') {
-            
-             return  '';
-        
-         }
-    
-         // Start VC Coding
-         
-        $bnm_default_color_schemes = array('red', 'green', 'blue', 'orange', 'pink', 'purple', 'olive', 'yellow', 'gray', 'chocolate');
-        
-        $theme_manager = get_option('bnm_theme_manager');
-        
-        $bnm_ticker_themes = array();
+    if (!function_exists('vc_map')) {
 
-        foreach ($bnm_default_color_schemes as $theme_key_id => $theme_key_title) :
+        return  '';
+    }
 
-            $bnm_ticker_themes[ucfirst($theme_key_title)] = $theme_key_title;
+    if (!class_exists('BWL_Breaking_News_Manager')) {
+
+        return  '';
+    }
+
+    if (BNM_PLUGIN_INSTALLED_VERSION < '1.0.9') {
+
+        return  '';
+    }
+
+    // Start VC Coding
+
+    $bnm_default_color_schemes = array('red', 'green', 'blue', 'orange', 'pink', 'purple', 'olive', 'yellow', 'gray', 'chocolate');
+
+    $theme_manager = get_option('bnm_theme_manager');
+
+    $bnm_ticker_themes = array();
+
+    foreach ($bnm_default_color_schemes as $theme_key_id => $theme_key_title) :
+
+        $bnm_ticker_themes[ucfirst($theme_key_title)] = $theme_key_title;
+
+    endforeach;
+
+    if (is_array($theme_manager) && count($theme_manager['colors']) > 0) :
+
+        foreach ($theme_manager['colors'] as $themes_key => $themes) :
+
+
+            $bnm_ticker_themes[$themes['theme_name']] = $themes_key;
 
         endforeach;
 
-        if (is_array($theme_manager) && count($theme_manager['colors']) > 0) :
-
-            foreach ($theme_manager['colors'] as $themes_key => $themes) :
+    endif;
 
 
-                $bnm_ticker_themes[$themes['theme_name']] = $themes_key;
+    $bnm_ticker_themes['Custom Theme'] = "custom";
 
-            endforeach;
-
-        endif;
-
-
-        $bnm_ticker_themes['Custom Theme'] = "custom";
-
-        $settings = array(
+    $settings = array(
         "name" => __("Breaking news", "bnm_vc"),
         "base" => "bwl_bnm",
         "icon" => "icon-bnm-vc-addon",
         "category" => __("BWL Breaking News", "bnm_vc"),
         "content_element" => true,
         "params" => array(
-            
+
             array(
                 "holder" => "div",
                 "type" => "textfield",
@@ -73,7 +72,7 @@ function bnm_vc_addon_function() {
                 "param_name" => "show_title",
                 "group" => __('General', 'bnm_vc'),
                 "description" => "",
-                "value" => Array(__('Hide, please!', 'bnm_vc') => '0')
+                "value" => array(__('Hide, please!', 'bnm_vc') => '0')
             ),
             array(
                 "type" => "hidden",
@@ -93,7 +92,8 @@ function bnm_vc_addon_function() {
                 "description" => __("", "bnm_vc"),
                 "group" => "General",
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Order Settings", "bnm_vc"),
                 "param_name" => "orderby",
@@ -107,7 +107,8 @@ function bnm_vc_addon_function() {
                 "group" => "General",
                 "description" => __("", "bnm_vc")
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Order Type", "bnm_vc"),
                 "param_name" => "order",
@@ -119,7 +120,8 @@ function bnm_vc_addon_function() {
                 "group" => "General",
                 "description" => __("", "bnm_vc")
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Custom Post Filter", "bnm_vc"),
                 "param_name" => "filter_type",
@@ -153,7 +155,8 @@ function bnm_vc_addon_function() {
                 "group" => "Filters",
                 "dependency" => array('element' => "filter_type", 'value' => array('tags'))
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Select Theme", "bnm_vc"),
                 "param_name" => "theme",
@@ -221,9 +224,10 @@ function bnm_vc_addon_function() {
                 "param_name" => "btn_show",
                 "group" => __('Navigation', 'bnm_vc'),
                 "description" => "",
-                "value" => Array(__('Hide please!', 'bnm_vc') => '0')
+                "value" => array(__('Hide please!', 'bnm_vc') => '0')
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Navigation Icon", "bnm_vc"),
                 "param_name" => "next_prev_btn_icon",
@@ -238,7 +242,8 @@ function bnm_vc_addon_function() {
                 "group" => "Navigation",
                 "description" => __("", "bnm_vc")
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Animation Type", "bnm_vc"),
                 "param_name" => "atype",
@@ -264,7 +269,8 @@ function bnm_vc_addon_function() {
                 "group" => "Animation",
                 "description" => __("", "bnm_vc")
             ),
-            array("type" => "dropdown",
+            array(
+                "type" => "dropdown",
                 "class" => "",
                 "heading" => __("Animation Speed", "bnm_vc"),
                 "param_name" => "atype",
@@ -283,7 +289,7 @@ function bnm_vc_addon_function() {
                 "param_name" => "rtl",
                 "group" => __('Settings', 'bnm_vc'),
                 "description" => "",
-                "value" => Array(__('Enable', 'bnm_vc') => '1')
+                "value" => array(__('Enable', 'bnm_vc') => '1')
             ),
             array(
                 "type" => 'checkbox',
@@ -291,7 +297,7 @@ function bnm_vc_addon_function() {
                 "param_name" => "showdate",
                 "group" => __('Settings', 'bnm_vc'),
                 "description" => "",
-                "value" => Array(__('Enable', 'bnm_vc') => '1')
+                "value" => array(__('Enable', 'bnm_vc') => '1')
             ),
             array(
                 "type" => 'checkbox',
@@ -299,24 +305,25 @@ function bnm_vc_addon_function() {
                 "param_name" => "ps",
                 "group" => __('Settings', 'bnm_vc'),
                 "description" => "",
-                "value" => Array(__('Enable', 'bnm_vc') => '1')
+                "value" => array(__('Enable', 'bnm_vc') => '1')
             )
         )
     );
 
     vc_map($settings);
-    
-    
+
+
     /*------------------------------ Start Custom Fields For BNM ---------------------------------*/
 
     if (function_exists('vc_add_shortcode_param')) {
         vc_add_shortcode_param('bnm_cat', 'cb_bnm_cat_field', BNM_VC_PLUGIN_DIR . '/admin/js/bnm_cat_sort.js');
     }
 
-// Function generate param type "number"
-    function cb_bnm_cat_field($settings, $value) {
+    // Function generate param type "number"
+    function cb_bnm_cat_field($settings, $value)
+    {
 
-//    $dependency = vc_generate_dependencies_attributes($settings);
+        //    $dependency = vc_generate_dependencies_attributes($settings);
         $param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
         $type = isset($settings['type']) ? $settings['type'] : '';
         $class = isset($settings['class']) ? $settings['class'] : '';
@@ -341,7 +348,7 @@ function bnm_vc_addon_function() {
 
         $parent_list = array();
 
-        foreach ($bnm_categories as $category):
+        foreach ($bnm_categories as $category) :
 
             $parent_list[$category->slug] = $category->name;
 
@@ -356,9 +363,9 @@ function bnm_vc_addon_function() {
             foreach ($explode_value as $key => $value) {
 
                 if (in_array($value, array_keys($parent_list))) {
-//                echo $parent_list[$value];
+                    //                echo $parent_list[$value];
                     $selected_list[$value] = $parent_list[$value];
-//                echo "<br>";
+                    //                echo "<br>";
                     unset($parent_list[$value]);
                 }
             }
@@ -381,7 +388,7 @@ function bnm_vc_addon_function() {
         $selected_list_string .= '</ul>';
         $output = "";
 
-        $output .='<section id="bnm_connected">
+        $output .= '<section id="bnm_connected">
                         ' . $parent_list_string . '
                         ' . $selected_list_string . '
                    </section>';
@@ -391,14 +398,15 @@ function bnm_vc_addon_function() {
         return $output;
     }
 
-// Generate param type "kb_tags"
+    // Generate param type "kb_tags"
 
     if (function_exists('vc_add_shortcode_param')) {
         vc_add_shortcode_param('bnm_tags', 'cb_bnm_tags_field', BNM_VC_PLUGIN_DIR . '/admin/js/bnm_tags_sort.js');
     }
 
-// Function generate param type "number"
-    function cb_bnm_tags_field($settings, $value) {
+    // Function generate param type "number"
+    function cb_bnm_tags_field($settings, $value)
+    {
 
         $param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
         $type = isset($settings['type']) ? $settings['type'] : '';
@@ -411,31 +419,31 @@ function bnm_vc_addon_function() {
 
             $explode_value = array();
         }
-        
-        $bnm_tags_args = array(
-                'hide_empty' => 0,
-                'orderby' => 'ID', 
-                'order' => 'ASC'
-        );
-            
-        $bnm_tags = get_tags( $bnm_tags_args );
 
-//        $bnm_category_args = array(
-//            'taxonomy' => 'tags',
-//            'hide_empty' => 1,
-//            'orderby' => 'title',
-//            'order' => 'ASC',
-//            'suppress_filters' => FALSE
-//        );
-//
-//        $bnm_categories = get_categories($bnm_category_args);
-//        echo "<pre>";
-//        print_r($bnm_tags);
-//        echo "</pre>";
+        $bnm_tags_args = array(
+            'hide_empty' => 0,
+            'orderby' => 'ID',
+            'order' => 'ASC'
+        );
+
+        $bnm_tags = get_tags($bnm_tags_args);
+
+        //        $bnm_category_args = array(
+        //            'taxonomy' => 'tags',
+        //            'hide_empty' => 1,
+        //            'orderby' => 'title',
+        //            'order' => 'ASC',
+        //            'suppress_filters' => FALSE
+        //        );
+        //
+        //        $bnm_categories = get_categories($bnm_category_args);
+        //        echo "<pre>";
+        //        print_r($bnm_tags);
+        //        echo "</pre>";
 
         $parent_list = array();
 
-        foreach ($bnm_tags as $tag):
+        foreach ($bnm_tags as $tag) :
 
             $parent_list[$tag->slug] = $tag->name;
 
@@ -475,7 +483,7 @@ function bnm_vc_addon_function() {
         $selected_list_string .= '</ul>';
         $output = "";
 
-        $output .='<section id="bnm_connected">
+        $output .= '<section id="bnm_connected">
                         ' . $parent_list_string . '
                         ' . $selected_list_string . '
                    </section>';
@@ -485,14 +493,15 @@ function bnm_vc_addon_function() {
         return $output;
     }
 
-//    Generate param type "number"
+    //    Generate param type "number"
     if (function_exists('vc_add_shortcode_param')) {
         vc_add_shortcode_param('number', 'bnm_number_field');
     }
 
-// Function generate param type "number"
-    function bnm_number_field($settings, $value) {
-//        $dependency = vc_generate_dependencies_attributes($settings);
+    // Function generate param type "number"
+    function bnm_number_field($settings, $value)
+    {
+        //        $dependency = vc_generate_dependencies_attributes($settings);
         $param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
         $type = isset($settings['type']) ? $settings['type'] : '';
         $min = isset($settings['min']) ? $settings['min'] : '';
@@ -503,23 +512,23 @@ function bnm_vc_addon_function() {
         $output .= '<input type="number" min="' . $min . '" max="' . $max . '" class="wpb_vc_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '" value="' . $value . '" style="max-width:100px; margin-right: 10px;" />' . $suffix;
         return $output;
     }
-    
+
     //    Generate param type "hidden"
     if (function_exists('vc_add_shortcode_param')) {
         vc_add_shortcode_param('hidden', 'bnm_hidden_field', BNM_VC_PLUGIN_DIR . '/admin/js/bnm_hidden_field.js');
     }
 
-// Function generate param type "hidden"
-    function bnm_hidden_field($settings, $value) {
+    // Function generate param type "hidden"
+    function bnm_hidden_field($settings, $value)
+    {
 
         $param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
         $type = isset($settings['type']) ? $settings['type'] : '';
         $class = isset($settings['class']) ? $settings['class'] : '';
         $output = '<select name="' . $param_name . '" class="wpb_vc_param_value ' . $param_name . ' ' . $type . ' ' . $class . '">';
-            $output .= '<option value="1" selected=selected>Inline</option>';
+        $output .= '<option value="1" selected=selected>Inline</option>';
         $output .= '</select>';
         return $output;
-        
     }
 
     /*------------------------------ End Custom Fields For BNM ---------------------------------*/
@@ -528,36 +537,37 @@ function bnm_vc_addon_function() {
 
         // Class Name should be WPBakeryShortCode_Your_Short_Code
         // See more in vc_composer/includes/classes/shortcodes/shortcodes.php
-         // bwl_bnm is important parameter. It must match with "base" => "bwl_bnm" name
-         
-        class WPBakeryShortCode_bwl_bnm extends WPBakeryShortCode {
+        // bwl_bnm is important parameter. It must match with "base" => "bwl_bnm" name
 
-            public function __construct($settings) {
- 
+        class WPBakeryShortCode_bwl_bnm extends WPBakeryShortCode
+        {
+
+            public function __construct($settings)
+            {
+
                 parent::__construct($settings); // !Important to call parent constructor to active all logic for shortcode.
-                
+
                 $this->jsCssScripts();
             }
             // Register scripts and styles there (for preview and frontend editor mode).
-            public function jsCssScripts() {
-                
-                wp_register_style('bnm-vc-admin-style', BNM_VC_PLUGIN_DIR . 'admin/css/bnm-vc-admin-style.css' , false, BNM_VC_PLUGIN_VERSION, false);
+            public function jsCssScripts()
+            {
+
+                wp_register_style('bnm-vc-admin-style', BNM_VC_PLUGIN_DIR . 'admin/css/bnm-vc-admin-style.css', false, BNM_VC_PLUGIN_VERSION, false);
                 wp_enqueue_style('bnm-vc-admin-style');
 
-                wp_register_script( 'bnm-admin-vc-addon-script', BNM_VC_PLUGIN_DIR . 'admin/js/bnm-vc-custom.js'  , array( 'jquery', 'jquery-ui-core','jquery-ui-datepicker','jquery-ui-sortable'), BNM_VC_PLUGIN_VERSION, TRUE );
+                wp_register_script('bnm-admin-vc-addon-script', BNM_VC_PLUGIN_DIR . 'admin/js/bnm-vc-custom.js', array('jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-sortable'), BNM_VC_PLUGIN_VERSION, TRUE);
                 wp_enqueue_script('bnm-admin-vc-addon-script');
-                
+
                 wp_register_style('bnm-sort-style', BNM_VC_PLUGIN_DIR . 'admin/css/bnm-sort.css', false, BNM_VC_PLUGIN_VERSION, false);
                 wp_enqueue_style('bnm-sort-style');
-                
-//                wp_register_script('test_element', plugins_url('assets/js/test_element.js', __FILE__), array('jquery'), time(), false);
-//                wp_register_style('test_element_iframe', plugins_url('assets/front_enqueue_iframe_css.css', __FILE__));
-                
+
+                //                wp_register_script('test_element', plugins_url('assets/js/test_element.js', __FILE__), array('jquery'), time(), false);
+                //                wp_register_style('test_element_iframe', plugins_url('assets/front_enqueue_iframe_css.css', __FILE__));
+
             }
-
         }
-
     } // End Class
-    
-    
+
+
 }
