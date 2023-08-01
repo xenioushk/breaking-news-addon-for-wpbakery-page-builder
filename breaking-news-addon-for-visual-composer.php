@@ -5,7 +5,7 @@
  * Plugin URI:  https://github.com/xenioushk/breaking-news-addon-for-wpbakery-page-builder
  * Version: 1.0.3
  * Description: Easy way to create & display breaking news any where of your site from WP Bakery Page Builder.
- * Author: xenioushk
+ * Author: Mahbub Alam Khan
  * Author URI:  https://bluewindlab.net/
  * Text Domain: bnm_vc
  * WP Requires at least: 6.0+
