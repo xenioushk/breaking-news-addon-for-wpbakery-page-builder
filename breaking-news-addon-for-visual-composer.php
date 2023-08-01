@@ -25,7 +25,7 @@ if (!class_exists('BNM_VC_Addon')) {
     {
 
       if (!defined('WPB_VC_VERSION') || !class_exists('BWL_Breaking_News_Manager')) {
-        add_action('admin_notices', 'notice_bnm_dependencies');
+        add_action('admin_notices', 'noticeBnmVcDependencies');
         return;
       }
 
@@ -35,7 +35,6 @@ if (!class_exists('BNM_VC_Addon')) {
       define("BNM_VC_PLUGIN_VERSION", '1.0.3');
       define('BNM_PLUGIN_INSTALLED_VERSION', get_option('bnm_plugin_version'));
 
-
       define("BNM_VC_PLUGIN_ROOT_FILE", 'bwl-breaking-news-manager.php');
       define("BNM_VC_PLUGIN_UPDATER_SLUG", plugin_basename(__FILE__)); // Required for plugin autoupdate.
 
@@ -44,7 +43,6 @@ if (!class_exists('BNM_VC_Addon')) {
 
       define("BNM_VC_CC_ID", "15317185"); // Plugin codecanyon Id.
 
-
       $this->includeFiles();
 
       add_action("wp_enqueue_scripts", [$this, "enqueueFrontendScripts"]);
@@ -52,9 +50,7 @@ if (!class_exists('BNM_VC_Addon')) {
     }
 
 
-
-
-    function notice_bnm_dependencies()
+    function noticeBnmVcDependencies()
     {
       echo '
       <div class="updated">
@@ -81,8 +77,8 @@ if (!class_exists('BNM_VC_Addon')) {
 
     function enqueueAdminScripts()
     {
-      // wp_enqueue_style('usa-vc-admin', plugins_url('assets/styles/admin.css', __FILE__), false, USA_VC_PLUGIN_VERSION, false);
-      wp_enqueue_script('bnm-vc-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery'], BNM_VC_PLUGIN_VERSION, TRUE);
+      wp_enqueue_style('bnm-vc-admin', plugins_url('assets/styles/admin.css', __FILE__), false, BNM_VC_PLUGIN_VERSION, false);
+      wp_enqueue_script('bnm-vc-admin', plugins_url('assets/scripts/admin.js', __FILE__), ['jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-sortable'], BNM_VC_PLUGIN_VERSION, TRUE);
       wp_localize_script(
         'bnm-vc-admin',
         'BnmVcAdminData',
