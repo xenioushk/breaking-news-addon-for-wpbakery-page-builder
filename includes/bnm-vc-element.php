@@ -34,10 +34,10 @@ function bnm_vc_addon_function()
     $bnm_ticker_themes['Custom Theme'] = "custom";
 
     $settings = array(
-        "name" => __("Breaking news", "bnm_vc"),
+        "name" => esc_html__("Breaking news", "bnm_vc"),
         "base" => "bwl_bnm",
         "icon" => "icon-bnm-vc-addon",
-        "category" => __("BWL Breaking News", "bnm_vc"),
+        "category" => esc_html__("BWL Breaking News", "bnm_vc"),
         "content_element" => true,
         "params" => array(
 
@@ -45,42 +45,42 @@ function bnm_vc_addon_function()
                 "holder" => "div",
                 "type" => "textfield",
                 "class" => "",
-                "heading" => __("Ticker  title", "bnm_vc"),
+                "heading" => esc_html__("Ticker  title", "bnm_vc"),
                 "param_name" => "title",
                 "value" => "",
-                "description" => __("Add custom title of breaking news ticker. Default: Breaking", "bnm_vc"),
+                "description" => esc_html__("Add custom title of breaking news ticker. Default: Breaking", "bnm_vc"),
                 "group" => "General"
             ),
             array(
                 "type" => 'checkbox',
-                "heading" => __('Hide ticker title?', 'bnm_vc'),
+                "heading" => esc_html__("Hide ticker title?", "bnm_vc"),
                 "param_name" => "show_title",
-                "group" => __('General', 'bnm_vc'),
+                "group" => esc_html__("General", "bnm_vc"),
                 "description" => "",
-                "value" => array(__('Hide, please!', 'bnm_vc') => '0')
+                "value" => array(esc_html__("Hide, please!", "bnm_vc") => '0')
             ),
             array(
                 "type" => "hidden",
                 "class" => "",
-                "heading" => __("Value", "bnm_vc"),
+                "heading" => esc_html__("Value", "bnm_vc"),
                 "param_name" => "inline",
                 "value" => 1,
-                "description" => __("", "bnm_vc"),
+                "description" => "",
                 "group" => "General",
             ),
             array(
                 "type" => "number",
                 "class" => "",
-                "heading" => __("No of items to display", "bnm_vc"),
+                "heading" => esc_html__("No of items to display", "bnm_vc"),
                 "param_name" => "limit",
                 "value" => "",
-                "description" => __("", "bnm_vc"),
+                "description" => "",
                 "group" => "General",
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Order Settings", "bnm_vc"),
+                "heading" => esc_html__("Order Settings", "bnm_vc"),
                 "param_name" => "orderby",
                 "value" => array(
                     "Select" => "",
@@ -90,12 +90,12 @@ function bnm_vc_addon_function()
                     "Random" => 'rand'
                 ),
                 "group" => "General",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Order Type", "bnm_vc"),
+                "heading" => esc_html__("Order Type", "bnm_vc"),
                 "param_name" => "order",
                 "value" => array(
                     "Select" => "",
@@ -103,12 +103,12 @@ function bnm_vc_addon_function()
                     "Descending" => 'DESC'
                 ),
                 "group" => "General",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Custom Post Filter", "bnm_vc"),
+                "heading" => esc_html__("Custom Post Filter", "bnm_vc"),
                 "param_name" => "filter_type",
                 "value" => array(
                     "Default ( Posts Marked as breaking )" => "",
@@ -120,101 +120,101 @@ function bnm_vc_addon_function()
                     "Display tags posts" => 'tags',
                 ),
                 "group" => "Filters",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => "bnm_cat",
                 "value" => "",
-                "heading" => __("Categories", "bnm_vc"),
+                "heading" => esc_html__("Categories", "bnm_vc"),
                 "param_name" => "categoriess",
-                "description" => __("Just drag and drop your required categories in to right box.", "bnm_vc"),
+                "description" => esc_html__("Just drag and drop your required categories in to right box.", "bnm_vc"),
                 "group" => "Filters",
                 "dependency" => array('element' => "filter_type", 'value' => array('category'))
             ),
             array(
                 "type" => "bnm_tags",
                 "value" => "",
-                "heading" => __("Tags", "bnm_vc"),
+                "heading" => esc_html__("Tags", "bnm_vc"),
                 "param_name" => "tags",
-                "description" => __("Just drag and drop your required tags in to right box.", "bnm_vc"),
+                "description" => esc_html__("Just drag and drop your required tags in to right box.", "bnm_vc"),
                 "group" => "Filters",
                 "dependency" => array('element' => "filter_type", 'value' => array('tags'))
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Select Theme", "bnm_vc"),
+                "heading" => esc_html__("Select Theme", "bnm_vc"),
                 "param_name" => "theme",
                 "value" => $bnm_ticker_themes,
                 "group" => "Themes",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => "colorpicker",
-                "heading" => __('Ticker background', 'bnm_vc'),
+                "heading" => esc_html__("Ticker background", "bnm_vc"),
                 "param_name" => "ticbg",
                 "value" => "#F9F9F9",
-                "description" => __('Set text color for pricing box content.', 'bnm_vc'),
-                "group" => __('Themes', 'bnm_vc'),
+                "description" => esc_html__("Set text color for pricing box content.", "bnm_vc"),
+                "group" => esc_html__("Themes", "bnm_vc"),
                 "dependency" => array('element' => "theme", 'value' => array('custom'))
             ),
             array(
                 "type" => "colorpicker",
-                "heading" => __('Text background', 'bnm_vc'),
+                "heading" => esc_html__("Text background", "bnm_vc"),
                 "param_name" => "tbg",
                 "value" => "#3C3C3C",
-                "description" => __('Set text color for pricing box content.', 'bnm_vc'),
-                "group" => __('Themes', 'bnm_vc'),
+                "description" => esc_html__("Set text color for pricing box content.", "bnm_vc"),
+                "group" => esc_html__("Themes", "bnm_vc"),
                 "dependency" => array('element' => "theme", 'value' => array('custom'))
             ),
             array(
                 "type" => "colorpicker",
-                "heading" => __('Title Text color', 'bnm_vc'),
+                "heading" => esc_html__("Title Text color", "bnm_vc"),
                 "param_name" => "tfc",
                 "value" => "#FFFFFF",
-                "description" => __('Set text color for pricing box content.', 'bnm_vc'),
-                "group" => __('Themes', 'bnm_vc'),
+                "description" => esc_html__("Set text color for pricing box content.", "bnm_vc"),
+                "group" => esc_html__("Themes", "bnm_vc"),
                 "dependency" => array('element' => "theme", 'value' => array('custom'))
             ),
             array(
                 "type" => "colorpicker",
-                "heading" => __('Post Text background', 'bnm_vc'),
+                "heading" => esc_html__("Post Text background", "bnm_vc"),
                 "param_name" => "pfc",
                 "value" => "#3C3C3C",
-                "description" => __('Set text color for pricing box content.', 'bnm_vc'),
-                "group" => __('Themes', 'bnm_vc'),
+                "description" => esc_html__("Set text color for pricing box content.", "bnm_vc"),
+                "group" => esc_html__("Themes", "bnm_vc"),
                 "dependency" => array('element' => "theme", 'value' => array('custom'))
             ),
             array(
                 "type" => "colorpicker",
-                "heading" => __('Post Text color', 'bnm_vc'),
+                "heading" => esc_html__("Post Text color", "bnm_vc"),
                 "param_name" => "pfhc",
                 "value" => "#FFFFFF",
-                "description" => __('Set text color for pricing box content.', 'bnm_vc'),
-                "group" => __('Themes', 'bnm_vc'),
+                "description" => esc_html__("Set text color for pricing box content.", "bnm_vc"),
+                "group" => esc_html__("Themes", "bnm_vc"),
                 "dependency" => array('element' => "theme", 'value' => array('custom'))
             ),
             array(
                 "type" => "colorpicker",
-                "heading" => __('Date Text color', 'bnm_vc'),
+                "heading" => esc_html__("Date Text color", "bnm_vc"),
                 "param_name" => "date_font_color",
                 "value" => "#FFFFFF",
-                "description" => __('Set text color for pricing box content.', 'bnm_vc'),
-                "group" => __('Themes', 'bnm_vc'),
+                "description" => esc_html__("Set text color for pricing box content.", "bnm_vc"),
+                "group" => esc_html__("Themes", "bnm_vc"),
                 "dependency" => array('element' => "theme", 'value' => array('custom'))
             ),
             array(
                 "type" => 'checkbox',
-                "heading" => __('Hide Navigation Button?', 'bnm_vc'),
+                "heading" => esc_html__("Hide Navigation Button?", "bnm_vc"),
                 "param_name" => "btn_show",
-                "group" => __('Navigation', 'bnm_vc'),
+                "group" => esc_html__("Navigation", "bnm_vc"),
                 "description" => "",
-                "value" => array(__('Hide please!', 'bnm_vc') => '0')
+                "value" => array(esc_html__("Hide please!", "bnm_vc") => '0')
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Navigation Icon", "bnm_vc"),
+                "heading" => esc_html__("Navigation Icon", "bnm_vc"),
                 "param_name" => "next_prev_btn_icon",
                 "value" => array(
                     "Select" => "",
@@ -225,12 +225,12 @@ function bnm_vc_addon_function()
                     "Chevron circle" => 'chevron-cricle'
                 ),
                 "group" => "Navigation",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Animation Type", "bnm_vc"),
+                "heading" => esc_html__("Animation Type", "bnm_vc"),
                 "param_name" => "atype",
                 "value" => array(
                     'Select' => '',
@@ -252,12 +252,12 @@ function bnm_vc_addon_function()
                     'Wobble' => 'wobble'
                 ),
                 "group" => "Animation",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => "dropdown",
                 "class" => "",
-                "heading" => __("Animation Speed", "bnm_vc"),
+                "heading" => esc_html__("Animation Speed", "bnm_vc"),
                 "param_name" => "atype",
                 "value" => array(
                     "Select" => "",
@@ -266,31 +266,31 @@ function bnm_vc_addon_function()
                     "Slow" => '15000'
                 ),
                 "group" => "Animation",
-                "description" => __("", "bnm_vc")
+                "description" => ""
             ),
             array(
                 "type" => 'checkbox',
-                "heading" => __('RTL Mode?', 'bnm_vc'),
+                "heading" => esc_html__("RTL Mode?", "bnm_vc"),
                 "param_name" => "rtl",
-                "group" => __('Settings', 'bnm_vc'),
+                "group" => esc_html__("Settings", "bnm_vc"),
                 "description" => "",
-                "value" => array(__('Enable', 'bnm_vc') => '1')
+                "value" => array(esc_html__("Enable", "bnm_vc") => '1')
             ),
             array(
                 "type" => 'checkbox',
-                "heading" => __('Show Date?', 'bnm_vc'),
+                "heading" => esc_html__("Show Date?", "bnm_vc"),
                 "param_name" => "showdate",
-                "group" => __('Settings', 'bnm_vc'),
+                "group" => esc_html__("Settings", "bnm_vc"),
                 "description" => "",
-                "value" => array(__('Enable', 'bnm_vc') => '1')
+                "value" => array(esc_html__("Enable", "bnm_vc") => '1')
             ),
             array(
                 "type" => 'checkbox',
-                "heading" => __('Show Separator?', 'bnm_vc'),
+                "heading" => esc_html__("Show Separator?", "bnm_vc"),
                 "param_name" => "ps",
-                "group" => __('Settings', 'bnm_vc'),
+                "group" => esc_html__("Settings", "bnm_vc"),
                 "description" => "",
-                "value" => array(__('Enable', 'bnm_vc') => '1')
+                "value" => array(esc_html__("Enable", "bnm_vc") => '1')
             )
         )
     );

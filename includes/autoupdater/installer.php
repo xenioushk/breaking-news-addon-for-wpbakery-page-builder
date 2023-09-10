@@ -11,7 +11,7 @@ function bnmVcAddInstallationData()
   $ver = BNM_VC_PLUGIN_VERSION;
   $requestUrl = $apiURL . "wp-json/bwlapi/v1/installation/count?product_id=$product_id&site=$site_url&referer=$ip&ver=$ver";
 
-  // bwllog($requestUrl);
+  bwllog($requestUrl);
 
   $output = wp_remote_get($requestUrl);
 

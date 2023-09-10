@@ -3,13 +3,20 @@
 /**
  * Plugin Name: Breaking News Addon For WP Bakery Page Builder
  * Plugin URI:  https://github.com/xenioushk/breaking-news-addon-for-wpbakery-page-builder
- * Version: 1.0.3
- * Description: Easy way to create & display breaking news any where of your site from WP Bakery Page Builder.
+ * Version: 1.0.4
+ * Description: Simplify the Process. Use WP Bakery Page Builder to Easily Create and Showcase Breaking News Anywhere on Your Site.
  * Author: Mahbub Alam Khan
- * Author URI:  https://bluewindlab.net/
+ * Author URI:  https://codecanyon.net/user/xenioushk
  * Text Domain: bnm_vc
  * WP Requires at least: 6.0+
  * Domain Path: /languages/
+ * 
+ * 
+ * @package Breaking News Addon For WP Bakery Page Builder
+ * @author Mahbub Alam Khan
+ * @license GPL-2.0+
+ * @link https://codecanyon.net/user/xenioushk
+ * @copyright 2023 BlueWindLab
  */
 
 if (!defined('ABSPATH')) {
@@ -21,7 +28,7 @@ if (!class_exists('BNM_VC_Addon')) {
   class BNM_VC_Addon
   {
 
-    function __construct()
+    public function __construct()
     {
 
       if (!defined('WPB_VC_VERSION') || !class_exists('BWL_Breaking_News_Manager')) {
@@ -29,10 +36,9 @@ if (!class_exists('BNM_VC_Addon')) {
         return;
       }
 
-
       define("BNM_VC_PLUGIN_TITLE", 'Breaking News Addon For WP Bakery Page Builder');
       define("BNM_VC_PLUGIN_DIR", plugins_url() . '/breaking-news-addon-for-visual-composer/');
-      define("BNM_VC_PLUGIN_VERSION", '1.0.3');
+      define("BNM_VC_PLUGIN_VERSION", '1.0.4');
       define('BNM_PLUGIN_INSTALLED_VERSION', get_option('bnm_plugin_version'));
 
       define("BNM_VC_PLUGIN_ROOT_FILE", 'bwl-breaking-news-manager.php');
@@ -47,6 +53,9 @@ if (!class_exists('BNM_VC_Addon')) {
 
       add_action("wp_enqueue_scripts", [$this, "enqueueFrontendScripts"]);
       add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
+
+      // Load Translation File
+      add_action('plugins_loaded', [$this, 'bnmVcLoadTranslationFile']);
     }
 
 
@@ -58,9 +67,12 @@ if (!class_exists('BNM_VC_Addon')) {
       </div>';
     }
 
-
     function includeFiles()
     {
+
+
+      require_once BNM_VC_PLUGIN_PATH . '/includes/bnm-vc-helpers.php';
+
       if (is_admin()) {
         require_once BNM_VC_PLUGIN_PATH . '/includes/bnm-vc-element.php';
 
@@ -88,9 +100,12 @@ if (!class_exists('BNM_VC_Addon')) {
         ]
       );
     }
-  }
 
-  load_plugin_textdomain('bnm_vc', false, plugin_basename(dirname(__FILE__)) . '/languages/');
+    function bnmVcLoadTranslationFile()
+    {
+      load_plugin_textdomain('bnm_vc', false, plugin_basename(dirname(__FILE__)) . '/languages/');
+    }
+  }
 
   /*--- Initialization---*/
 
