@@ -25,6 +25,7 @@ if (!function_exists('bnmVcApiUrl')) {
 
   function bnmVcApiUrl()
   {
+
     $baseUrl = get_home_url();
     if (strpos($baseUrl, "localhost") != false) {
       return "http://localhost/bwl_api/";

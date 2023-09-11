@@ -31,11 +31,6 @@ if (!class_exists('BNM_VC_Addon')) {
     public function __construct()
     {
 
-      if (!defined('WPB_VC_VERSION') || !class_exists('BWL_Breaking_News_Manager')) {
-        add_action('admin_notices', 'noticeBnmVcDependencies');
-        return;
-      }
-
       define("BNM_VC_PLUGIN_TITLE", 'Breaking News Addon For WP Bakery Page Builder');
       define("BNM_VC_PLUGIN_DIR", plugins_url() . '/breaking-news-addon-for-visual-composer/');
       define("BNM_VC_PLUGIN_VERSION", '1.0.4');
@@ -49,7 +44,14 @@ if (!class_exists('BNM_VC_Addon')) {
 
       define("BNM_VC_CC_ID", "15317185"); // Plugin codecanyon Id.
 
-      $this->includeFiles();
+      // Check the WPBakery Page Builder  && BWL Breaking New Manager Install & Activation Status.
+      if (!defined('WPB_VC_VERSION') || !class_exists('BWL_Breaking_News_Manager')) {
+        add_action('admin_notices', [$this, 'noticeBnmVcDependencies']);
+      } else {
+
+        $this->includeFiles();
+
+        add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
 
       add_action("wp_enqueue_scripts", [$this, "enqueueFrontendScripts"]);
       add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
@@ -62,14 +64,13 @@ if (!class_exists('BNM_VC_Addon')) {
     function noticeBnmVcDependencies()
     {
       echo '
-      <div class="updated">
+      <div class="notice notice-error">
         <p><strong>' . BNM_VC_PLUGIN_TITLE . '</strong> requires both <strong><a href="https://1.envato.market/VKEo3" target="_blank">WPBakery Page Builder</a></strong> & <strong><a href="https://1.envato.market/bnm-wp" target="_blank">BWL Breaking News Manager</a></strong> plugins to be installed and activated on your site.</p>
       </div>';
     }
 
     function includeFiles()
     {
-
 
       require_once BNM_VC_PLUGIN_PATH . '/includes/bnm-vc-helpers.php';
 
@@ -81,10 +82,6 @@ if (!class_exists('BNM_VC_Addon')) {
         require_once BNM_VC_PLUGIN_PATH .  '/includes/autoupdater/installer.php';
         require_once BNM_VC_PLUGIN_PATH .  '/includes/autoupdater/updater.php';
       }
-    }
-
-    function enqueueFrontendScripts()
-    {
     }
 
     function enqueueAdminScripts()
