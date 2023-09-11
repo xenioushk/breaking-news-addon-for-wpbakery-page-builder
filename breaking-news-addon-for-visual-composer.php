@@ -53,11 +53,9 @@ if (!class_exists('BNM_VC_Addon')) {
 
         add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
 
-      add_action("wp_enqueue_scripts", [$this, "enqueueFrontendScripts"]);
-      add_action('admin_enqueue_scripts', [$this, 'enqueueAdminScripts']);
-
-      // Load Translation File
-      add_action('plugins_loaded', [$this, 'bnmVcLoadTranslationFile']);
+        // Load Translation File
+        add_action('plugins_loaded', [$this, 'bnmVcLoadTranslationFile']);
+      }
     }
 
 
