@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name: Breaking News Addon For WP Bakery Page Builder
- * Plugin URI:  https://github.com/xenioushk/breaking-news-addon-for-wpbakery-page-builder
+ * Plugin URI:  https://bluewindlab.net/portfolio/breaking-news-addon-for-wp-bakery-page-builder/
  * Version: 1.0.4
- * Description: Simplify the Process. Use WP Bakery Page Builder to Easily Create and Showcase Breaking News Anywhere on Your Site.
+ * Description: Easy & powerful breaking news addon for WP Bakery Page Builder that allows you to create an animated breaking news ticker for your site within a few minutes. Addon comes with 11 predefined themes with a custom theme builder and 16 smooth news ticker animation features. So, you can create an eye-catching breaking news ticker for your site requirements.
  * Author: Mahbub Alam Khan
  * Author URI:  https://codecanyon.net/user/xenioushk
  * Text Domain: bnm_vc
