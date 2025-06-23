@@ -1,7 +1,7 @@
 {
   "name": "breaking-news-addon-for-visual-composer",
-  "version": "1.0.3",
-  "description": "",
+  "version": "1.0.5",
+  "description": "This WP Bakery Page Builder addon allows you to create an animated breaking news ticker for your site within a few minutes.",
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build",

@@ -1,8 +1,10 @@
 node_modules
-vendor
 tests
-composer.lock
+assets
 *.map
 *.hot-update.js
 *.hot-update.json
 custom_logs.log
+.vscode
+vendor
+.DS_Store
