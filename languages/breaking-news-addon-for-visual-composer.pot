@@ -1,27 +1,43 @@
-# Copyright (C) 2015 Automattic
-# This file is distributed under the GNU General Public License v2 or later.
-#, fuzzy
+# Copyright (C) 2025 Mahbub Alam Khan
+# This file is distributed under the same license as the Breaking News Addon For WP Bakery Page Builder plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Breaking News Addon For WP Bakery Page Builder\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tags/_s\n"
-"POT-Creation-Date: 2023-09-11 12:31+0300\n"
-"PO-Revision-Date: 2018-01-31 21:24+0600\n"
+"Project-Id-Version: Breaking News Addon For WP Bakery Page Builder 1.0.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/breaking-news-addon-for-visual-composer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
-"Language: en\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
-"X-Poedit-KeywordsList: _;__;_n;_x;_e;esc_attr__;esc_attr_e;esc_html__;"
-"esc_html_e\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: node_modules\n"
-"X-Poedit-SearchPathExcluded-1: lang\n"
-"X-Poedit-SearchPathExcluded-2: libs\n"
+"POT-Creation-Date: 2025-06-23T08:43:29+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: bnm_vc\n"
+
+#. Plugin Name of the plugin
+#: breaking-news-addon-for-visual-composer.php
+msgid "Breaking News Addon For WP Bakery Page Builder"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: breaking-news-addon-for-visual-composer.php
+msgid "https://bluewindlab.net/portfolio/breaking-news-addon-for-wp-bakery-page-builder/"
+msgstr ""
+
+#. Description of the plugin
+#: breaking-news-addon-for-visual-composer.php
+msgid "This WP Bakery Page Builder addon allows you to create an animated breaking news ticker for your site within a few minutes."
+msgstr ""
+
+#. Author of the plugin
+#: breaking-news-addon-for-visual-composer.php
+msgid "Mahbub Alam Khan"
+msgstr ""
+
+#. Author URI of the plugin
+#: breaking-news-addon-for-visual-composer.php
+msgid "https://bluewindlab.net"
+msgstr ""
 
 #: includes/bnm-vc-element.php:37
 msgid "Breaking news"
@@ -95,15 +111,21 @@ msgstr ""
 msgid "Ticker background"
 msgstr ""
 
-#: includes/bnm-vc-element.php:157 includes/bnm-vc-element.php:166
-#: includes/bnm-vc-element.php:175 includes/bnm-vc-element.php:184
-#: includes/bnm-vc-element.php:193 includes/bnm-vc-element.php:202
+#: includes/bnm-vc-element.php:157
+#: includes/bnm-vc-element.php:166
+#: includes/bnm-vc-element.php:175
+#: includes/bnm-vc-element.php:184
+#: includes/bnm-vc-element.php:193
+#: includes/bnm-vc-element.php:202
 msgid "Set text color for pricing box content."
 msgstr ""
 
-#: includes/bnm-vc-element.php:158 includes/bnm-vc-element.php:167
-#: includes/bnm-vc-element.php:176 includes/bnm-vc-element.php:185
-#: includes/bnm-vc-element.php:194 includes/bnm-vc-element.php:203
+#: includes/bnm-vc-element.php:158
+#: includes/bnm-vc-element.php:167
+#: includes/bnm-vc-element.php:176
+#: includes/bnm-vc-element.php:185
+#: includes/bnm-vc-element.php:194
+#: includes/bnm-vc-element.php:203
 msgid "Themes"
 msgstr ""
 
@@ -155,12 +177,14 @@ msgstr ""
 msgid "RTL Mode?"
 msgstr ""
 
-#: includes/bnm-vc-element.php:275 includes/bnm-vc-element.php:283
+#: includes/bnm-vc-element.php:275
+#: includes/bnm-vc-element.php:283
 #: includes/bnm-vc-element.php:291
 msgid "Settings"
 msgstr ""
 
-#: includes/bnm-vc-element.php:277 includes/bnm-vc-element.php:285
+#: includes/bnm-vc-element.php:277
+#: includes/bnm-vc-element.php:285
 #: includes/bnm-vc-element.php:293
 msgid "Enable"
 msgstr ""
